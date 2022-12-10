@@ -1,5 +1,13 @@
+let color = "black";
+
 document.addEventListener("DOMContentLoaded", function () {
   createBoard(16);
+
+  let btnPopup = document.querySelector("#popup");
+  btnPopup.addEventListener("click", function () {
+    let size = getSize();
+    createBoard(size);
+  });
   console.log("hi");
 });
 
@@ -13,7 +21,37 @@ function createBoard(size) {
 
   for (let i = 0; i < numDivs; i++) {
     let div = document.createElement("div");
-    div.style.backgroundColor = "salmon";
+    div.addEventListener("mouseover", colorDiv);
     sketchBoard.insertAdjacentElement("beforeend", div);
   }
+}
+
+function getSize() {
+  let userInput = prompt("Pick a board size");
+  let message = document.querySelector("#message");
+  if (userInput == "") {
+    message.innerHTML = "Please enter a number";
+  } else if (userInput < 0 || userInput > 100) {
+    message.innerHTML = "Provide a number between 1 and 100";
+  } else {
+    message.innerHTML = "Begin Sketching!";
+    return userInput;
+  }
+}
+
+function colorDiv() {
+  if (color == "random") {
+    this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+  } else {
+    this.style.backgroundColor = "black";
+  }
+}
+
+function setColor(colorChoice) {
+  color = colorChoice;
+}
+
+function resetBoard() {
+  let divs = document.querySelectorAll("div");
+  divs.forEach((div) => (div.style.backgroundColor = "white"));
 }
