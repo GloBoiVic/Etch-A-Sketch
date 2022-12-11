@@ -1,14 +1,28 @@
 let color = "black";
+let click = false;
 
 document.addEventListener("DOMContentLoaded", function () {
   createBoard(16);
+
+  document.querySelector("body").addEventListener("click", function (e) {
+    if (e.target.tagName != "BUTTON") {
+      click = !click;
+      let draw = document.querySelector("#draw");
+      if (click) {
+        draw.style.color = "green";
+        draw.innerHTML = "Sketch Activated!";
+      } else {
+        draw.style.color = "red";
+        draw.innerHTML = "Click to start sketching";
+      }
+    }
+  });
 
   let btnPopup = document.querySelector("#popup");
   btnPopup.addEventListener("click", function () {
     let size = getSize();
     createBoard(size);
   });
-  console.log("hi");
 });
 
 function createBoard(size) {
@@ -40,10 +54,12 @@ function getSize() {
 }
 
 function colorDiv() {
-  if (color == "random") {
-    this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-  } else {
-    this.style.backgroundColor = "black";
+  if (click) {
+    if (color == "random") {
+      this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+    } else {
+      this.style.backgroundColor = "black";
+    }
   }
 }
 
