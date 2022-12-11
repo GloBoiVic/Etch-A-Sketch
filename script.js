@@ -9,10 +9,10 @@ document.addEventListener("DOMContentLoaded", function () {
       click = !click;
       let draw = document.querySelector("#draw");
       if (click) {
-        draw.style.color = "green";
+        draw.style.color = "#7FFF00";
         draw.innerHTML = "Sketch Activated!";
       } else {
-        draw.style.color = "red";
+        draw.style.color = "white";
         draw.innerHTML = "Click to start sketching";
       }
     }
@@ -69,5 +69,7 @@ function setColor(colorChoice) {
 
 function resetBoard() {
   let divs = document.querySelectorAll("div");
-  divs.forEach((div) => (div.style.backgroundColor = "white"));
+  divs.forEach((div) => {
+    div.style.backgroundColor = "white";
+  });
 }
