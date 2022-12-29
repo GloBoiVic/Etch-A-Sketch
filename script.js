@@ -3,17 +3,19 @@ let click = false;
 
 document.addEventListener("DOMContentLoaded", function () {
   createBoard(16);
+  let draw = document.querySelector("#draw");
+  draw.style.color = "white";
+  draw.innerHTML = "Click to start sketching";
 
   document.querySelector("body").addEventListener("click", function (e) {
     if (e.target.tagName != "BUTTON") {
       click = !click;
-      let draw = document.querySelector("#draw");
       if (click) {
         draw.style.color = "#7FFF00";
         draw.innerHTML = "Sketch Activated!";
       } else {
+        draw.innerHTML = "Click to resume sketching";
         draw.style.color = "white";
-        draw.innerHTML = "Click to start sketching";
       }
     }
   });
@@ -48,7 +50,6 @@ function getSize() {
   } else if (userInput < 0 || userInput > 100) {
     message.innerHTML = "Provide a number between 1 and 100";
   } else {
-    message.innerHTML = "Begin Sketching!";
     return userInput;
   }
 }
