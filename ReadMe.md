@@ -71,7 +71,7 @@ To improve this project, I would like to:
 - Add an animated background feature
   - Update: I re-added the animated background and refactored the code to remove background clutter.
     - I refactored by clearing all the divs in the resetBoard function by setting it to empty.
-    - Then I add the resetBoard function to the button that selects the size. This clears previous drawings
+    - Then I added the resetBoard function to the button that selects the size; this clears previous drawings
 - Make the board size bigger
 - Create a retro styled Etch-A-Sketch Board like back when I was a kid
 
